@@ -134,11 +134,11 @@ class _RegisterPageState extends State<RegisterPage> {
               return null;
             },
           ),
-          PasswordInputField(
+          PasswordInputFieldWidget(
             controller: _passwordTEController,
             hintText: 'Password',
           ),
-          PasswordInputField(
+          PasswordInputFieldWidget(
             controller: _passwordTEController,
             hintText: 'Confirm password',
           ),

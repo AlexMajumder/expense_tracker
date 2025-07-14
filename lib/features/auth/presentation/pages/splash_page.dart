@@ -1,4 +1,5 @@
 import 'package:expense_tracker/features/auth/presentation/widgets/app_logo_widget.dart';
+import 'package:expense_tracker/features/profile/presentation/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'login_page.dart';
 class SplashPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
     await Future.delayed(const Duration(seconds: 3));
     Navigator.push(
       context,
-      MaterialPageRoute(builder: (context) => const LoginPage()),
+      MaterialPageRoute(builder: (context) =>  ProfilePage()),
     );
   }
 

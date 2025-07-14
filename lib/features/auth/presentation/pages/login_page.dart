@@ -61,7 +61,7 @@ class _LoginPageState extends State<LoginPage> {
                       return null;
                     },
                   ),
-                  PasswordInputField(
+                  PasswordInputFieldWidget(
                     controller: _passwordTEController,
                     hintText: 'Enter your password',
                   ),

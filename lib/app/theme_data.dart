@@ -17,34 +17,41 @@ class AppThemeData {
         titleLarge: TextStyle(fontSize: 28, fontWeight: FontWeight.w600),
       ),
 
-      inputDecorationTheme: const InputDecorationTheme(
+      inputDecorationTheme: InputDecorationTheme(
         fillColor: AppColors.inputFillColor,
         filled: true,
-        hintStyle: TextStyle(
+
+        hintStyle: const TextStyle(
           color: Colors.grey,
           fontWeight: FontWeight.w400,
           fontSize: 16,
         ),
-        contentPadding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
-        border: OutlineInputBorder(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+        labelStyle: TextStyle(
+            color: Colors.grey[700],
+            fontSize: 12,
+        ),
+        border: const OutlineInputBorder(
           borderSide: BorderSide(
             color: AppColors.inputBorderColor, // border color
             width: 1.1, // border width
           ),
         ),
-        enabledBorder: OutlineInputBorder(
+        enabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.inputBorderColor, width: 1.1),
         ),
-        focusedBorder: OutlineInputBorder(
-          borderSide: BorderSide(color: AppColors.inputBorderColor, width: 1.1),
+        focusedBorder: const OutlineInputBorder(
+          borderSide: BorderSide(color: AppColors.themeColor, width: 1.1),
         ),
-        errorBorder: OutlineInputBorder(
+        errorBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: Colors.red, width: 1.1),
         ),
-        disabledBorder: OutlineInputBorder(
+        disabledBorder: const OutlineInputBorder(
           borderSide: BorderSide(color: AppColors.inputBorderColor, width: 1.1),
         ),
+
       ),
+
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           foregroundColor: Colors.white,

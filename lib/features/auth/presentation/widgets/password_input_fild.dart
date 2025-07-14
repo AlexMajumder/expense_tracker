@@ -1,17 +1,25 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import '../../../../app/assets_path.dart';
-class PasswordInputField extends StatefulWidget {
 
+class PasswordInputFieldWidget extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
+  final String? labelText;
 
-  const PasswordInputField({super.key, required this.controller, required this.hintText});
+  const PasswordInputFieldWidget({
+    super.key,
+    required this.controller,
+    required this.hintText,
+    this.labelText,
+  });
 
   @override
-  State<PasswordInputField> createState() => _PasswordInputFieldState();
+  State<PasswordInputFieldWidget> createState() =>
+      _PasswordInputFieldWidgetState();
 }
 
-class _PasswordInputFieldState extends State<PasswordInputField> {
+class _PasswordInputFieldWidgetState extends State<PasswordInputFieldWidget> {
   bool _obscureText = true;
 
   void _toggleVisibility() {
@@ -26,16 +34,12 @@ class _PasswordInputFieldState extends State<PasswordInputField> {
       controller: widget.controller,
       keyboardType: TextInputType.visiblePassword,
       decoration: InputDecoration(
-        hintText:widget.hintText,
+        hintText: widget.hintText,
+        labelText: widget.labelText ?? '',
         suffixIcon: IconButton(
           icon: _obscureText
               ? const Icon(Icons.visibility_off, color: Colors.grey)
-              : Image.asset(
-            AssetsPath.openEye,
-            width: 24,
-            height: 24,
-            color: Colors.grey[700], // optional tint
-          ),
+              : SvgPicture.asset(AssetsPath.openEyeSvg, width: 14, height: 14),
           onPressed: _toggleVisibility,
         ),
       ),
