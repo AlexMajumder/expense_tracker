@@ -2,7 +2,7 @@ import 'package:email_validator/email_validator.dart';
 import 'package:expense_tracker/app/app_colors.dart';
 import 'package:expense_tracker/features/auth/presentation/widgets/app_logo_widget.dart';
 import 'package:expense_tracker/features/auth/presentation/widgets/custom_icon_button_widget.dart';
-import 'package:expense_tracker/features/auth/presentation/widgets/password_input_fild.dart';
+import 'package:expense_tracker/shared/widgets/password_input_field_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import '../../../../app/assets_path.dart';

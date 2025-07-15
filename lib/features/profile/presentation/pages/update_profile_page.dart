@@ -1,4 +1,4 @@
-import 'package:expense_tracker/features/auth/presentation/widgets/password_input_fild.dart';
+import 'package:expense_tracker/shared/widgets/password_input_field_widget.dart';
 import 'package:flutter/material.dart';
 import '../widgets/app_bar_widget.dart';
 import '../widgets/profile_header_widget.dart';
