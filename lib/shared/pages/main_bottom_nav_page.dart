@@ -1,4 +1,5 @@
 import 'package:expense_tracker/app/app_colors.dart';
+import 'package:expense_tracker/features/home/presentation/pages/home_page.dart';
 import 'package:expense_tracker/features/profile/presentation/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 
@@ -13,7 +14,7 @@ class MainBottomNavScreen extends StatefulWidget {
 
 class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   final List<Widget> _screens = [
-    ProfilePage(),
+    HomePage(),
     ProfilePage(),
     ProfilePage(),
     ProfilePage(),
@@ -43,7 +44,7 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
         child: NavigationBar(
           backgroundColor: Colors.white,
           indicatorColor: Colors.transparent,
-          selectedIndex: 1,
+          selectedIndex: 0,
           //onDestinationSelected: 0,
           destinations: [
             NavigationDestination(

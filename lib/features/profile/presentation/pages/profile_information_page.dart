@@ -1,7 +1,6 @@
 import 'package:expense_tracker/app/app_colors.dart';
 import 'package:expense_tracker/features/profile/presentation/pages/update_profile_page.dart';
 import 'package:flutter/material.dart';
-
 import '../widgets/app_bar_widget.dart';
 import '../widgets/profile_header_widget.dart';
 

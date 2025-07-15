@@ -3,6 +3,7 @@ import 'package:expense_tracker/features/profile/presentation/pages/profile_page
 import 'package:flutter/material.dart';
 import '../../../../shared/pages/main_bottom_nav_page.dart';
 import 'login_page.dart';
+
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
 
@@ -11,7 +12,6 @@ class SplashPage extends StatefulWidget {
 }
 
 class _SplashPageState extends State<SplashPage> {
-
   @override
   void initState() {
     _endTheSplashScreen();
@@ -20,12 +20,12 @@ class _SplashPageState extends State<SplashPage> {
 
   Future<void> _endTheSplashScreen() async {
     await Future.delayed(const Duration(seconds: 3));
-    Navigator.push(
+    Navigator.pushAndRemoveUntil(
       context,
-      MaterialPageRoute(builder: (context) =>  MainBottomNavScreen()),
+      MaterialPageRoute(builder: (context) => MainBottomNavScreen()),
+      (route) => false,
     );
   }
-
 
   @override
   Widget build(BuildContext context) {
