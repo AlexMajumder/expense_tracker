@@ -3,6 +3,9 @@ class AssetsPath{
   static const String appLogoSvg = '$_assetsPath/logo.svg';
   static const String primaryContainer = '$_assetsPath/primary_container.svg';
   static const String primaryContainerTopDesign = '$_assetsPath/primary_container_top_design.svg';
+  static const String cashSvg = '$_assetsPath/cash.svg';
+  static const String cardSvg = '$_assetsPath/card.svg';
+  static const String bankSvg = '$_assetsPath/bank.svg';
 
 
   static const String _iconsPath = 'assets/icons';

@@ -2,6 +2,7 @@ import 'package:expense_tracker/shared/widgets/app_bar_widget.dart';
 import 'package:flutter/material.dart';
 import '../../../../app/app_colors.dart';
 import '../../../../shared/widgets/header_widget.dart';
+import '../widgets/add_option_bottom_sheet_widget.dart';
 
 class WalletPage extends StatefulWidget {
   const WalletPage({super.key});
@@ -51,19 +52,25 @@ class _WalletPageState extends State<WalletPage> {
                       fontWeight: FontWeight.w700,
                     ),
                   ),
-                  SizedBox(height: 32,),
+                  SizedBox(height: 32),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      _buildWalletOptionItem(title: 'Add', iconData: Icons.add),
+                      _buildWalletOptionItem(
+                        title: 'Add',
+                        iconData: Icons.add,
+                        onTap: _onTapAddButton,
+                      ),
                       _buildWalletOptionItem(
                         title: 'Pay',
                         iconData: Icons.qr_code,
+                        onTap: _onTapPayButton,
                       ),
                       _buildWalletOptionItem(
                         title: 'Send',
                         iconData: Icons.send,
                         rotateDegrees: -45,
+                        onTap: _onTapSendButton,
                       ),
                     ],
                   ),
@@ -80,18 +87,22 @@ class _WalletPageState extends State<WalletPage> {
     required String title,
     required IconData iconData,
     double? rotateDegrees,
+    required VoidCallback? onTap,
   }) {
     return Column(
       children: [
-        Container(
-          padding: const EdgeInsets.all(12),
-          decoration: BoxDecoration(
-            shape: BoxShape.circle,
-            border: Border.all(color: AppColors.themeColor, width: 1),
-          ),
-          child: Transform.rotate(
-            angle: rotateDegrees ?? 0 * 3.1415927 / 180,
-            child: Icon(iconData, color: AppColors.themeColor, size: 30),
+        GestureDetector(
+          onTap: onTap,
+          child: Container(
+            padding: const EdgeInsets.all(12),
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: AppColors.themeColor, width: 1),
+            ),
+            child: Transform.rotate(
+              angle: rotateDegrees ?? 0 * 3.1415927 / 180,
+              child: Icon(iconData, color: AppColors.themeColor, size: 30),
+            ),
           ),
         ),
         const SizedBox(height: 8),
@@ -101,5 +112,15 @@ class _WalletPageState extends State<WalletPage> {
         ),
       ],
     );
+  }
+
+  _onTapAddButton() {
+    AddOptionBottomSheedWidget(context);
+  }
+  _onTapPayButton() {
+    AddOptionBottomSheedWidget(context);
+  }
+  _onTapSendButton() {
+    AddOptionBottomSheedWidget(context);
   }
 }

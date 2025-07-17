@@ -24,6 +24,8 @@ class HeaderWidget extends StatelessWidget {
             top: -22,
             left: -55,
             child: SvgPicture.asset(
+              height: 219,
+              width: 267,
               AssetsPath.primaryContainerTopDesign,
               fit: BoxFit.cover,
             ),
