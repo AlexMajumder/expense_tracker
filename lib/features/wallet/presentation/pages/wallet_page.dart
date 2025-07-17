@@ -83,7 +83,7 @@ class _WalletPageState extends State<WalletPage> {
     );
   }
 
-  Column _buildWalletOptionItem({
+  Widget _buildWalletOptionItem({
     required String title,
     required IconData iconData,
     double? rotateDegrees,
@@ -117,9 +117,11 @@ class _WalletPageState extends State<WalletPage> {
   _onTapAddButton() {
     AddOptionBottomSheedWidget(context);
   }
+
   _onTapPayButton() {
     AddOptionBottomSheedWidget(context);
   }
+
   _onTapSendButton() {
     AddOptionBottomSheedWidget(context);
   }
