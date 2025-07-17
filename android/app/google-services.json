@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "952842370166",
+    "project_id": "robov-00",
+    "storage_bucket": "robov-00.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:952842370166:android:fa0f17b87f9b3a65ec3357",
+        "android_client_info": {
+          "package_name": "com.alexmajumder.expense_tracker"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAss8ht-k4id6aF37EZzks-Zu33EgQ74jE"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

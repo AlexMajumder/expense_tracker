@@ -1,7 +1,10 @@
 import 'package:expense_tracker/app/app_colors.dart';
+import 'package:expense_tracker/features/add_expense/presentation/pages/add_expense_page.dart';
 import 'package:expense_tracker/features/home/presentation/pages/home_page.dart';
 import 'package:expense_tracker/features/profile/presentation/pages/profile_page.dart';
 import 'package:flutter/material.dart';
+
+import '../../features/wallet/presentation/pages/wallet_page.dart';
 
 class MainBottomNavScreen extends StatefulWidget {
   const MainBottomNavScreen({super.key});
@@ -16,8 +19,8 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   final List<Widget> _screens = [
     HomePage(),
     ProfilePage(),
-    ProfilePage(),
-    ProfilePage(),
+    AddExpensePage(),
+    WalletPage(),
   ];
 
   @override
@@ -28,7 +31,7 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: _screens[0],
+      body: _screens[3],
       bottomNavigationBar: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -44,7 +47,7 @@ class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
         child: NavigationBar(
           backgroundColor: Colors.white,
           indicatorColor: Colors.transparent,
-          selectedIndex: 0,
+          selectedIndex: 3,
           //onDestinationSelected: 0,
           destinations: [
             NavigationDestination(

@@ -1,6 +1,6 @@
 import 'package:expense_tracker/shared/widgets/password_input_field_widget.dart';
 import 'package:flutter/material.dart';
-import '../widgets/app_bar_widget.dart';
+import '../../../../shared/widgets/app_bar_widget.dart';
 import '../widgets/profile_header_widget.dart';
 
 class UpdateProfilePage extends StatefulWidget {
@@ -25,7 +25,7 @@ class _UpdateProfilePageState extends State<UpdateProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBarWidget(),
+      appBar: AppBarWidget(title: 'Profile', actionIcon: Icons.notifications,),
       body: SingleChildScrollView(
         child: Column(
           children: [

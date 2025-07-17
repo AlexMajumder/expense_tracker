@@ -1,6 +1,6 @@
 import 'package:expense_tracker/features/profile/presentation/pages/profile_information_page.dart';
 import 'package:flutter/material.dart';
-import '../widgets/app_bar_widget.dart';
+import '../../../../shared/widgets/app_bar_widget.dart';
 import '../widgets/profile_header_widget.dart';
 
 class ProfilePage extends StatefulWidget {
@@ -15,7 +15,7 @@ class _ProfilePageState extends State<ProfilePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       extendBodyBehindAppBar: true,
-      appBar: AppBarWidget(),
+      appBar: AppBarWidget(title: 'Profile', actionIcon: Icons.notifications,),
       body: SingleChildScrollView(
         child: Column(
           children: [
