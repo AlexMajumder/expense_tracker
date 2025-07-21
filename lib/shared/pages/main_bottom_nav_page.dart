@@ -6,16 +6,16 @@ import 'package:flutter/material.dart';
 
 import '../../features/wallet/presentation/pages/wallet_page.dart';
 
-class MainBottomNavScreen extends StatefulWidget {
-  const MainBottomNavScreen({super.key});
+class MainBottomNavPage extends StatefulWidget {
+  const MainBottomNavPage({super.key});
 
   static const name = '/main-bottom-nav-screen';
 
   @override
-  State<MainBottomNavScreen> createState() => _MainBottomNavScreenState();
+  State<MainBottomNavPage> createState() => _MainBottomNavPageState();
 }
 
-class _MainBottomNavScreenState extends State<MainBottomNavScreen> {
+class _MainBottomNavPageState extends State<MainBottomNavPage> {
   final List<Widget> _screens = [
     HomePage(),
     ProfilePage(),
