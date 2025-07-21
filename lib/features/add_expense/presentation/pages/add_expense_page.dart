@@ -6,15 +6,17 @@ import '../../../../shared/widgets/header_widget.dart';
 class AddExpensePage extends StatefulWidget {
   const AddExpensePage({super.key});
 
+  static const name = '/add-expense';
+
   @override
   State<AddExpensePage> createState() => _AddExpensePageState();
 }
 
 class _AddExpensePageState extends State<AddExpensePage> {
   final TextEditingController _expenseNameTEController =
-  TextEditingController();
+      TextEditingController();
   final TextEditingController _expenseAmountTEController =
-  TextEditingController();
+      TextEditingController();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -84,18 +86,30 @@ class _AddExpensePageState extends State<AddExpensePage> {
                     controller: _expenseAmountTEController,
                     textInputAction: TextInputAction.next,
                     keyboardType: TextInputType.number,
-                    style: TextStyle(color: AppColors.themeColor,fontWeight: FontWeight.w600,fontSize: 16),
-                    decoration:  InputDecoration(
-                        fillColor: Colors.white,
-                        hintText: '0.00',
-                        prefix: Text('\$',style: TextStyle(
-                            color: AppColors.themeColor,fontWeight: FontWeight.w600,fontSize: 16
-                        ),),
-                        suffix: Text('Clear',style: TextStyle(
+                    style: TextStyle(
+                      color: AppColors.themeColor,
+                      fontWeight: FontWeight.w600,
+                      fontSize: 16,
+                    ),
+                    decoration: InputDecoration(
+                      fillColor: Colors.white,
+                      hintText: '0.00',
+                      prefix: Text(
+                        '\$',
+                        style: TextStyle(
+                          color: AppColors.themeColor,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 16,
+                        ),
+                      ),
+                      suffix: Text(
+                        'Clear',
+                        style: TextStyle(
                           fontSize: 12,
                           fontWeight: FontWeight.w500,
                           color: AppColors.themeColor,
-                        ),)
+                        ),
+                      ),
                     ),
                     validator: (String? value) {
                       if (value?.trim().isEmpty ?? true) {
@@ -111,7 +125,6 @@ class _AddExpensePageState extends State<AddExpensePage> {
         ],
       ),
     );
-
   }
 
   @override

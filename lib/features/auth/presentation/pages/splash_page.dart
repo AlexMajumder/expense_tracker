@@ -1,9 +1,6 @@
 import 'package:expense_tracker/features/auth/presentation/widgets/app_logo_widget.dart';
-import 'package:expense_tracker/features/profile/presentation/pages/profile_page.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
-import '../../../../shared/pages/main_bottom_nav_page.dart';
-import 'login_page.dart';
 
 class SplashPage extends StatefulWidget {
   const SplashPage({super.key});
@@ -24,7 +21,7 @@ class _SplashPageState extends State<SplashPage> {
   Future<void> _endTheSplashScreen() async {
     await Future.delayed(const Duration(seconds: 3));
     if (mounted) {
-      context.pushReplacement(MainBottomNavPage.name);
+      context.go('/home');
     }
   }
 

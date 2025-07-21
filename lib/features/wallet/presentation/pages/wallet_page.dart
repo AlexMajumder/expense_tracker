@@ -7,6 +7,8 @@ import '../widgets/add_option_bottom_sheet_widget.dart';
 class WalletPage extends StatefulWidget {
   const WalletPage({super.key});
 
+  static const name = '/wallet';
+
   @override
   State<WalletPage> createState() => _WalletPageState();
 }
