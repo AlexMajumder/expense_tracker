@@ -6,6 +6,9 @@ class AssetsPath{
   static const String cashSvg = '$_assetsPath/cash.svg';
   static const String cardSvg = '$_assetsPath/card.svg';
   static const String bankSvg = '$_assetsPath/bank.svg';
+  static const String paypalLogo = '$_assetsPath/paypal_logo.png';
+  static const String cardBackGroundSvg = '$_assetsPath/card_bg.svg';
+  static const String chipSvg = '$_assetsPath/chip.svg';
 
 
   static const String _iconsPath = 'assets/icons';

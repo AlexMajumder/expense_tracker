@@ -25,7 +25,7 @@ void AddOptionBottomSheedWidget(BuildContext context) {
               title: 'Cards',
               imagePath: AssetsPath.cardSvg,
               imageHeight: 28,
-              onTap: (){
+              onTap: () {
                 Navigator.push(
                   context,
                   MaterialPageRoute(builder: (context) => ConnectWalletPage()),
@@ -35,22 +35,20 @@ void AddOptionBottomSheedWidget(BuildContext context) {
             _optionItem(
               title: 'Bank Account',
               imagePath: AssetsPath.bankSvg,
-              imageHeight: 36, onTap: _onTapBankAccountButton,
+              imageHeight: 36,
+              onTap: _onTapBankAccountButton,
             ),
             _optionItem(
               title: 'Others',
               imagePath: AssetsPath.cashSvg,
-              imageHeight: 39, onTap: _onTapOthersButton,
+              imageHeight: 39,
+              onTap: _onTapOthersButton,
             ),
           ],
         ),
       );
     },
   );
-
-
-
-
 }
 
 Widget _optionItem({

@@ -46,7 +46,7 @@ class _ConnectWalletPageState extends State<ConnectWalletPage> {
                   children: [
                     Container(
                       padding: const EdgeInsets.all(4),
-                      margin: const EdgeInsets.all(40),
+                      margin: const EdgeInsets.all(25),
                       decoration: BoxDecoration(
                         color: const Color(0xFFF4F6F6),
                         borderRadius: BorderRadius.circular(30),
