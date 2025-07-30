@@ -11,6 +11,8 @@ import '../../../../app/assets_path.dart';
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
 
+  static const name = '/login';
+
   @override
   State<LoginPage> createState() => _LoginPageState();
 }

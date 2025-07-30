@@ -1,3 +1,4 @@
+import 'package:expense_tracker/features/auth/presentation/pages/register_page.dart';
 import 'package:expense_tracker/features/auth/presentation/widgets/app_logo_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
@@ -21,7 +22,7 @@ class _SplashPageState extends State<SplashPage> {
   Future<void> _endTheSplashScreen() async {
     await Future.delayed(const Duration(seconds: 3));
     if (mounted) {
-      context.go('/home');
+      context.go(RegisterPage.name);
     }
   }
 

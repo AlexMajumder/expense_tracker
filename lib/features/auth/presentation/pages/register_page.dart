@@ -10,6 +10,8 @@ import '../../../../app/assets_path.dart';
 class RegisterPage extends StatefulWidget {
   const RegisterPage({super.key});
 
+  static const name = '/register';
+
   @override
   State<RegisterPage> createState() => _RegisterPageState();
 }
@@ -54,8 +56,8 @@ class _RegisterPageState extends State<RegisterPage> {
                 _buildForm(),
                 SizedBox(height: 8),
                 ElevatedButton(
-                  onPressed: _onTapLoginButton,
-                  child: const Text('Login'),
+                  onPressed: _onTapRegisterButton,
+                  child: const Text('Register'),
                 ),
                 SizedBox(height: 8),
 
@@ -89,7 +91,7 @@ class _RegisterPageState extends State<RegisterPage> {
                           color: AppColors.themeColor,
                         ),
                         recognizer: TapGestureRecognizer()
-                          ..onTap = _onTapRegisterButton,
+                          ..onTap = _onTapMediaRegisterButton,
                       ),
                     ],
                   ),
@@ -106,6 +108,7 @@ class _RegisterPageState extends State<RegisterPage> {
     return Form(
       key: _formKey,
       child: Column(
+        spacing: 12,
         children: [
           TextFormField(
             autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -139,7 +142,7 @@ class _RegisterPageState extends State<RegisterPage> {
             hintText: 'Password',
           ),
           PasswordInputFieldWidget(
-            controller: _passwordTEController,
+            controller: _confirmPasswordTEController,
             hintText: 'Confirm password',
           ),
         ],
@@ -149,9 +152,15 @@ class _RegisterPageState extends State<RegisterPage> {
 
 
 
-  void _onTapLoginButton() {}
+  void _onTapRegisterButton() {
 
-  void _onTapRegisterButton() {}
+    if (_formKey.currentState!.validate() && _passwordTEController.text == _confirmPasswordTEController.text) {
+
+    }
+
+  }
+
+  void _onTapMediaRegisterButton() {}
 
   @override
   void dispose() {
