@@ -6,12 +6,14 @@ class PasswordInputFieldWidget extends StatefulWidget {
   final TextEditingController controller;
   final String hintText;
   final String? labelText;
+  final String? Function(String?)? validator;
 
   const PasswordInputFieldWidget({
     super.key,
     required this.controller,
     required this.hintText,
     this.labelText,
+    this.validator,
   });
 
   @override
@@ -43,12 +45,14 @@ class _PasswordInputFieldWidgetState extends State<PasswordInputFieldWidget> {
           onPressed: _toggleVisibility,
         ),
       ),
-      validator: (String? value) {
-        if (value?.isEmpty ?? true) {
-          return 'Enter valid Password';
-        }
-        return null;
-      },
+      validator:
+          widget.validator ??
+          (String? value) {
+            if (value?.isEmpty ?? true) {
+              return 'Enter a valid password';
+            }
+            return null;
+          },
     );
   }
 }

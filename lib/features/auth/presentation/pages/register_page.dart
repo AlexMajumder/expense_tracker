@@ -19,7 +19,8 @@ class RegisterPage extends StatefulWidget {
 class _RegisterPageState extends State<RegisterPage> {
   final TextEditingController _emailTEController = TextEditingController();
   final TextEditingController _passwordTEController = TextEditingController();
-  final TextEditingController _confirmPasswordTEController = TextEditingController();
+  final TextEditingController _confirmPasswordTEController =
+      TextEditingController();
   final TextEditingController _userNameTEController = TextEditingController();
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
@@ -55,10 +56,7 @@ class _RegisterPageState extends State<RegisterPage> {
                 SizedBox(height: 4),
                 _buildForm(),
                 SizedBox(height: 8),
-                ElevatedButton(
-                  onPressed: _onTapRegisterButton,
-                  child: const Text('Register'),
-                ),
+                ElevatedButton(onPressed: () {}, child: const Text('Register')),
                 SizedBox(height: 8),
 
                 Text(
@@ -104,6 +102,8 @@ class _RegisterPageState extends State<RegisterPage> {
     );
   }
 
+  void _onTapRegisterButton() {}
+
   Widget _buildForm() {
     return Form(
       key: _formKey,
@@ -140,24 +140,32 @@ class _RegisterPageState extends State<RegisterPage> {
           PasswordInputFieldWidget(
             controller: _passwordTEController,
             hintText: 'Password',
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return 'Enter a password';
+              }
+              if (value.length < 6) {
+                return 'Password must be at least 6 characters';
+              }
+              return null;
+            },
           ),
           PasswordInputFieldWidget(
             controller: _confirmPasswordTEController,
             hintText: 'Confirm password',
+            validator: (String? value) {
+              if (value == null || value.isEmpty) {
+                return 'Confirm your password';
+              }
+              if (value != _passwordTEController.text) {
+                return 'Passwords do not match';
+              }
+              return null;
+            },
           ),
         ],
       ),
     );
-  }
-
-
-
-  void _onTapRegisterButton() {
-
-    if (_formKey.currentState!.validate() && _passwordTEController.text == _confirmPasswordTEController.text) {
-
-    }
-
   }
 
   void _onTapMediaRegisterButton() {}
@@ -170,5 +178,4 @@ class _RegisterPageState extends State<RegisterPage> {
     _confirmPasswordTEController.dispose();
     super.dispose();
   }
-
 }

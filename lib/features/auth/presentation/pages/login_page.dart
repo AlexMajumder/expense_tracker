@@ -6,7 +6,12 @@ import 'package:expense_tracker/features/auth/presentation/widgets/custom_icon_b
 import 'package:expense_tracker/shared/widgets/password_input_field_widget.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
 import '../../../../app/assets_path.dart';
+import '../../../home/presentation/pages/home_page.dart';
+import '../bloc/login_bloc.dart';
 
 class LoginPage extends StatefulWidget {
   const LoginPage({super.key});
@@ -29,120 +34,137 @@ class _LoginPageState extends State<LoginPage> {
         child: Padding(
           padding: const EdgeInsets.all(24),
           child: SafeArea(
-            child: Form(
-              key: _formKey,
-              child: Column(
-                spacing: 16,
-                crossAxisAlignment: CrossAxisAlignment.center,
-                children: [
-                  SizedBox(height: 12),
-                  AppLogoWidget(),
-                  Text(
-                    textAlign: TextAlign.center,
-                    'Welcome back! Glad to see you, Again!',
-                    style: Theme.of(context).textTheme.headlineLarge?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-                  SizedBox(height: 12),
-                  TextFormField(
-                    autovalidateMode: AutovalidateMode.onUserInteraction,
-                    controller: _emailTEController,
-                    textInputAction: TextInputAction.next,
-                    keyboardType: TextInputType.emailAddress,
-                    decoration: const InputDecoration(
-                      hintText: 'Enter your email',
-                    ),
-                    validator: (String? value) {
-                      if (value?.trim().isEmpty ?? true) {
-                        return 'Enter your email address';
-                      }
-                      if (!EmailValidator.validate(value!)) {
-                        return 'Enter a valid email address';
-                      }
-                      return null;
-                    },
-                  ),
-                  PasswordInputFieldWidget(
-                    controller: _passwordTEController,
-                    hintText: 'Enter your password',
-                  ),
-                  Align(
-                    alignment: Alignment.centerRight,
-                    child: TextButton(
-                      onPressed: () {},
-                      child: Text(
-                        'Forgot Password?',
-                        style: ThemeData().textTheme.titleMedium?.copyWith(
-                          color: Colors.grey[600],
-                        ),
-                      ),
-                    ),
-                  ),
-
-                  SizedBox(height: 24),
-
-                  ElevatedButton(
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => const RegisterPage(),
-                        ),
-                      );
-                    },
-                    child: const Text('Login'),
-                  ),
-
-                  SizedBox(height: 28),
-
-                  Text(
-                    'Or Login with',
-                    style: ThemeData().textTheme.titleMedium?.copyWith(
-                      fontWeight: FontWeight.w600,
-                    ),
-                  ),
-
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            child: BlocConsumer<LoginBloc, LoginState>(
+              listener: (context, state) {
+                if (state is LoginFailure) {
+                  ScaffoldMessenger.of(context).showSnackBar(
+                    SnackBar(content: Text(state.message)),
+                  );
+                } else if (state is LoginSuccess) {
+                  context.go(HomePage.name);
+                }
+              },
+              builder: (context, state) {
+                return Form(
+                  key: _formKey,
+                  child: Column(
+                    spacing: 16,
+                    crossAxisAlignment: CrossAxisAlignment.center,
                     children: [
-                      CustomIconButton(svgPath: AssetsPath.facebookSvg),
-                      CustomIconButton(svgPath: AssetsPath.googleSvg),
-                      CustomIconButton(svgPath: AssetsPath.appleSvg),
-                    ],
-                  ),
-                  SizedBox(height: 32),
-                  Text.rich(
-                    TextSpan(
-                      text: "Don’t have an account? ",
-                      style: ThemeData().textTheme.titleMedium?.copyWith(
-                        fontWeight: FontWeight.w500,
+                      const SizedBox(height: 12),
+                      const AppLogoWidget(),
+                      Text(
+                        textAlign: TextAlign.center,
+                        'Welcome back! Glad to see you, Again!',
+                        style: Theme.of(context).textTheme.headlineLarge?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
                       ),
-                      children: [
+                      const SizedBox(height: 12),
+                      TextFormField(
+                        autovalidateMode: AutovalidateMode.onUserInteraction,
+                        controller: _emailTEController,
+                        textInputAction: TextInputAction.next,
+                        keyboardType: TextInputType.emailAddress,
+                        decoration: const InputDecoration(
+                          hintText: 'Enter your email',
+                        ),
+                        validator: (String? value) {
+                          if (value?.trim().isEmpty ?? true) {
+                            return 'Enter your email address';
+                          }
+                          if (!EmailValidator.validate(value!)) {
+                            return 'Enter a valid email address';
+                          }
+                          return null;
+                        },
+                      ),
+                      PasswordInputFieldWidget(
+                        controller: _passwordTEController,
+                        hintText: 'Enter your password',
+                      ),
+                      Align(
+                        alignment: Alignment.centerRight,
+                        child: TextButton(
+                          onPressed: () {
+                            // forgot password action here
+                          },
+                          child: Text(
+                            'Forgot Password?',
+                            style: ThemeData().textTheme.titleMedium?.copyWith(
+                              color: Colors.grey[600],
+                            ),
+                          ),
+                        ),
+                      ),
+                      const SizedBox(height: 24),
+                      state is LoginLoading
+                          ? const CircularProgressIndicator()
+                          : ElevatedButton(
+                        onPressed: () {
+                          if (_formKey.currentState!.validate()) {
+                            context.read<LoginBloc>().add(
+                              LoginSubmitted(
+                                _emailTEController.text,
+                                _passwordTEController.text,
+                              ),
+                            );
+                          }
+                        },
+                        child: const Text('Login'),
+                      ),
+                      const SizedBox(height: 28),
+                      Text(
+                        'Or Login with',
+                        style: ThemeData().textTheme.titleMedium?.copyWith(
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          CustomIconButton(svgPath: AssetsPath.facebookSvg),
+                          CustomIconButton(svgPath: AssetsPath.googleSvg),
+                          CustomIconButton(svgPath: AssetsPath.appleSvg),
+                        ],
+                      ),
+                      const SizedBox(height: 32),
+                      Text.rich(
                         TextSpan(
-                          text: "Register Now",
+                          text: "Don’t have an account? ",
                           style: ThemeData().textTheme.titleMedium?.copyWith(
                             fontWeight: FontWeight.w500,
-                            color: AppColors.themeColor,
                           ),
-                          recognizer: TapGestureRecognizer()
-                            ..onTap = _onTapRegisterButton,
+                          children: [
+                            TextSpan(
+                              text: "Register Now",
+                              style: ThemeData().textTheme.titleMedium?.copyWith(
+                                fontWeight: FontWeight.w500,
+                                color: AppColors.themeColor,
+                              ),
+                              recognizer: TapGestureRecognizer()
+                                ..onTap = () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => const RegisterPage(),
+                                    ),
+                                  );
+                                },
+                            ),
+                          ],
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   ),
-                ],
-              ),
+                );
+              },
             ),
           ),
         ),
       ),
     );
   }
-
-  void _onTapLoginButton() {}
-
-  void _onTapRegisterButton() {}
 
   @override
   void dispose() {
